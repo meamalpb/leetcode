@@ -1,19 +1,14 @@
 class Solution:
     def findMin(self, nums) -> int:
-        l,r=0,len(nums)-1
-        while(l<=r):
-            m=(l+r)//2
-            if(nums[l]<nums[m]):
-                if(nums[r]<nums[m]):
-                    l+=1
-                else:
-                    r-=1
+        left, right = 0, len(nums) - 1
+        if(nums[left]<nums[right]): return nums[left]
+        while left < right:
+            mid = (left + right) // 2
+            if nums[mid] > nums[right]:
+                left = mid + 1
             else:
-                if(nums[r]<nums[m]):
-                    l+=1
-                else:
-                    r-=1
-        return nums[l]
+                right = mid
+        return nums[right]
 
 
 
